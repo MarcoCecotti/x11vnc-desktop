@@ -7,8 +7,8 @@
 # Authors:
 # Xiangmin Jiao <xmjiao@gmail.com>
 
-FROM ubuntu:18.04
-LABEL maintainer Xiangmin Jiao <xmjiao@gmail.com>
+FROM nvidia/vulkan:1.1.121-cuda-10.1-beta.1-ubuntu18.04
+LABEL maintainer Marco Cecotti
 
 ARG DOCKER_LANG=en_US
 ARG DOCKER_TIMEZONE=America/New_York
