@@ -10,6 +10,12 @@
 FROM nvidia/vulkan:1.1.121-cuda-10.1-beta.1-ubuntu18.04
 LABEL maintainer Marco Cecotti
 
+ARG UBUNTU_RELEASE=18.04
+# Make all NVIDIA GPUs visible, but we want to manually install drivers
+ARG NVIDIA_VISIBLE_DEVICES=all
+# Supress interactive menu while installing keyboard-configuration
+ARG DEBIAN_FRONTEND=noninteractive
+ENV NVIDIA_DRIVER_CAPABILITIES all
 ARG DOCKER_LANG=en_US
 ARG DOCKER_TIMEZONE=America/New_York
 
@@ -18,8 +24,6 @@ ENV LANG=$DOCKER_LANG.UTF-8 \
     LC_ALL=$DOCKER_LANG.UTF-8
 
 WORKDIR /tmp
-
-ARG DEBIAN_FRONTEND=noninteractive
 
 # Install some required system tools and packages for X Windows and ssh
 # Also remove the message regarding unminimize
