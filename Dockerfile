@@ -80,7 +80,7 @@ RUN apt-get update && \
         xauth \
         x11vnc \
         \
-        vulkan-info \
+        vulkan-utils \
         \
         firefox \
         xpdf && \
