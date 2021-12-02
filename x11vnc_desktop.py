@@ -17,7 +17,7 @@ import os
 
 owner = "x11vnc"
 proj = os.path.basename(sys.argv[0]).split('_')[0]
-image = owner + "/desktop"
+image = owner + "-desktop"
 tag = "latest"
 projdir = "project"
 workdir = "project"
@@ -270,7 +270,6 @@ if __name__ == "__main__":
         stderr_write("Docker failed. Please make sure docker was properly " +
                      "installed and has been started.\n")
         sys.exit(-1)
-
     if args.pull or not img:
         try:
             if args.verbose:
@@ -289,7 +288,7 @@ if __name__ == "__main__":
                                             '-q']).find(img) >= 0:
             subprocess.Popen(["docker", "rmi", "-f", img.decode('utf-8')[:-1]])
 
-    docker_user = "ubuntu"
+    docker_user = "carla"
     docker_home = "/home/" + docker_user
 
     if args.reset:
