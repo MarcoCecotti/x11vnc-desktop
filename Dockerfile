@@ -80,6 +80,8 @@ RUN apt-get update && \
         xauth \
         x11vnc \
         \
+        vulkan-info
+        \
         firefox \
         xpdf && \
     chmod 755 /usr/local/share/zsh/site-functions && \
@@ -132,7 +134,7 @@ RUN apt-get update && \
 # Customization for user and location
 ########################################################
 # Set up user so that we do not run as root in DOCKER
-ENV DOCKER_USER=ubuntu \
+ENV DOCKER_USER=carla \
     DOCKER_UID=9999 \
     DOCKER_GID=9999 \
     DOCKER_SHELL=/bin/zsh
@@ -170,5 +172,5 @@ WORKDIR $DOCKER_HOME
 ENV DOCKER_CMD=start_vnc
 
 USER root
-ENTRYPOINT ["/sbin/my_init", "--quiet", "--", "/sbin/setuser", "ubuntu"]
+ENTRYPOINT ["/sbin/my_init", "--quiet", "--", "/sbin/setuser", "carla"]
 CMD ["$DOCKER_CMD"]
