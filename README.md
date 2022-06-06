@@ -16,7 +16,15 @@ This is a Docker image for Ubuntu with X11 and VNC. The Ubuntu base containst th
 ## Preparation
 Before you start, you need to first install Python, Docker, and nvidia-docker2.
 
+## Building the Docker Image
+```
+sudo docker build -t x11vnc-desktop .
+```
+
 ## Running the Docker Image
+```
+sudo docker run --runtime=nvidia -ti --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix x11vnc-desktop
+```
 Enter the following command on the directory where the script x11vnc_desktop.py is (top level of the repository), and follow the instructions to connect through VNC.
 ```
 python2 x11vnc_desktop.py -A "--runtime=nvidia -ti --rm -e DISPLAY" -i x11vnc-desktop
